@@ -27,7 +27,9 @@ function getData(commaLvl = 4) {
         commaLvl
       )}%`;
       percentage = 100 * (Number(resp) / population);
-    });
+      tptDiv.innerText = resp.toLocaleString();
+    }
+    );
 }
-
+if(percentage > 100) location.reload();
 getData();

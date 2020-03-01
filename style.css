@@ -33,6 +33,7 @@ body {
   font-weight: 750;
   font-family: Oxanium, sans-serif;
   cursor: pointer;
+  margin-bottom: -30px;
 }
 .textD {
   font-size: 3vw;
