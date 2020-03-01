@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Oxanium&display=swap');
 
 .sick {
   text-align: center;
   font-size: 10vw;
-  font-family: Montserrat, sans-serif;
+  font-family: Oxanium, sans-serif;
   font-weight: 900;
   line-height: 0.875;
 }
@@ -25,6 +26,7 @@ body {
   margin-top: none;
   margin-bottom: none;
   font-weight: 750;
+  font-family: Oxanium, sans-serif;
 }
 .textD {
   font-size: 3vw;
