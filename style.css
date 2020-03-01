@@ -5,7 +5,7 @@
   text-align: center;
   font-size: 10vw;
   font-family: Oxanium, sans-serif;
-  font-weight: 900;
+  font-weight: bold;
   line-height: 0.875;
 }
 span {
@@ -32,6 +32,7 @@ body {
   margin-bottom: none;
   font-weight: 750;
   font-family: Oxanium, sans-serif;
+  cursor: pointer;
 }
 .textD {
   font-size: 3vw;
