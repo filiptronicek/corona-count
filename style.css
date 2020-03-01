@@ -1,0 +1,147 @@
+.sick {
+  text-align: center;
+  font-size: 10vw;
+  font-family: Montserrat, sans-serif;
+  font-weight: 900;
+  line-height: 0.875;
+}
+span {
+  text-align: center;
+}
+body {
+  max-width: 100%;
+  max-height: 100%;
+  background: white;
+  color: #dc0000;
+}
+.sickText {
+  margin-top: 0px;
+  font-size: 5vw;
+}
+#percentage {
+  font-size: 9vw;
+  margin-top: none;
+  margin-bottom: none;
+  font-weight: 750;
+}
+.textD {
+  font-size: 3vw;
+}
+@media only screen and (max-width: 800px) {
+  .sick {
+    font-size: 16vw;
+  }
+  #percentage {
+    font-size: 15vw;
+  }
+  .sickText {
+    font-size: 7vw;
+  }
+  .textD {
+    font-size: 5vw;
+  }
+  .github-corner {
+    display: none;
+  }
+  .accordion,
+  .panel {
+      width: 100% !important;
+  }
+}
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
+}
+@keyframes octocat-wave {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  20%,
+  60% {
+    transform: rotate(-25deg);
+  }
+  40%,
+  80% {
+    transform: rotate(10deg);
+  }
+}
+@media (max-width: 500px) {
+  .github-corner:hover .octo-arm {
+    animation: none;
+  }
+  .github-corner .octo-arm {
+    animation: octocat-wave 560ms ease-in-out;
+  }
+}
+.madeBy {
+  padding-top: 50px;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #000000d8;
+    color: #dc0000;
+  }
+  .panel {
+    background: #222f49 !important;
+  }
+}
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+.madeBy {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+.madeBy > span > a {
+  font-weight: 600;
+  color: black;
+  text-decoration: none;
+}
+.madeBy > span > a > img {
+  border-radius: 250px;
+  width: 25px;
+}
+.accordion {
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 40%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  background: #ccc;
+}
+.accordion:focus {
+  background: #ccc;
+}
+
+.active,
+.accordion:hover {
+  background: #ccc;
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background: #b3c9c8;
+  overflow: hidden;
+  width: 40%;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
