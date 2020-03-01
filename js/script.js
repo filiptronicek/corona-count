@@ -7,4 +7,4 @@ const population = 7778973427;
 fetch(url)
   .then(response => response.json())
   .then(resp => tptDiv.innerText = resp.latest)
-  .then(resp => percent.innerText = `${(100*(Number(resp) / population)).toFixed(7)}%`);
+  .then(resp => percent.innerText = `${(100*(Number(resp) / population)).toFixed(6)}%`);
