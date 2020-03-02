@@ -8,14 +8,12 @@ let commaDigits = 4;
 let percentage;
 
 percent.onclick = function() {
-  if(commaDigits > 8) {
+  if (commaDigits > 8) {
     commaDigits = 2;
   } else {
-    commaDigits ++;
+    commaDigits++;
   }
-  percent.innerText = `${percentage.toFixed(
-    commaDigits
-  )}%`;
+  percent.innerText = `${percentage.toFixed(commaDigits)}%`;
 };
 
 function getData(commaLvl = 4) {
@@ -28,8 +26,7 @@ function getData(commaLvl = 4) {
       )}%`;
       percentage = 100 * (Number(resp) / population);
       tptDiv.innerText = resp.toLocaleString();
-    }
-    );
+    });
 }
-if(percentage > 100) location.reload();
+if (percentage > 100) location.reload();
 getData();
