@@ -5,6 +5,8 @@ numOfPlacesToShow = 5;
 
 let sorted = [];
 
+table.innerHTML += `Getting the latest data... `;
+
 function changeNum(numToShow = numOfPlacesToShow) {
   function changeNumGen(textNum, domject) {
     const realNum = Number(textNum);
