@@ -9,15 +9,11 @@ fetch(url)
   .then(response => response.json())
   .then(resp => (resp = resp.locations))
   .then(resp => {
-    console.log("Original: ");
-    console.table(resp);
     let objSorted = resp
       .sort(function(a, b) {
         return a.latest - b.latest;
       })
       .reverse();
-
-    console.log(objSorted);
     let rank = 0;
     for (let instance in objSorted) {
       rank++;
