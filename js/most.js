@@ -12,17 +12,21 @@ function changeNum(numToShow = numOfPlacesToShow) {
       changeNum(realNum + 5);
       domject.innerText = realNum + 5;
     } else {
-        changeNum(numOfPlacesToShow);
-        domject.innerText = numOfPlacesToShow.toString();
+      changeNum(numOfPlacesToShow);
+      domject.innerText = numOfPlacesToShow.toString();
     }
   }
   console.log("rendering " + numToShow);
+
   fetch(url)
     .then(response => response.json())
     .then(resp => (resp = resp.locations))
     .then(resp => {
       table.innerHTML = "";
-
+      table.innerHTML += `
+      <tr>
+          <th>Name</th>
+          <th>Number of confirmed cases</th> `;
       let objSorted = resp
         .sort(function(a, b) {
           return a.latest - b.latest;
@@ -40,7 +44,7 @@ function changeNum(numToShow = numOfPlacesToShow) {
         }
         if (rank < numToShow + 1) {
           table.innerHTML += `
-              <tr>
+
                   <td> ${listStr} </td>
                   <td> ${objSorted[instance].latest} </td>
               </tr>
