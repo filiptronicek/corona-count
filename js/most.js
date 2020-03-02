@@ -8,7 +8,7 @@ let sorted = [];
 function changeNum(numToShow = numOfPlacesToShow) {
   function changeNumGen(textNum, domject) {
     const realNum = Number(textNum);
-    if (realNum < 100) {
+    if (realNum < 50) {
       changeNum(realNum + 5);
       domject.innerText = realNum + 5;
     } else {
