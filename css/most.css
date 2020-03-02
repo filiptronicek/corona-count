@@ -21,3 +21,6 @@ th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+.changeNumSpan {
+  cursor: pointer;
+}
