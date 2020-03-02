@@ -3,7 +3,7 @@
 
 .sick {
   text-align: center;
-  font-size: 10vw;
+  font-size: 9vw;
   font-family: Oxanium, sans-serif;
   font-weight: bold;
   line-height: 0.875;
@@ -26,13 +26,12 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-#percentage {
-  font-size: 9vw;
+#percentage, #recoveryRate {
+  font-size: 8vw;
   margin-top: none;
   margin-bottom: none;
   font-weight: 750;
   font-family: Oxanium, sans-serif;
-  cursor: pointer;
   margin-bottom: -30px;
 }
 .textD {
