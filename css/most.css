@@ -24,3 +24,10 @@ tr:nth-child(even) {
 .changeNumSpan {
   cursor: pointer;
 }
+
+/* Mobile */
+@media only screen and (max-width: 800px) {
+  table {
+    max-width: 100vw;
+  }
+}
