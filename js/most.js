@@ -1,7 +1,8 @@
 const url = "https://coronavirus-tracker-api.herokuapp.com/confirmed";
 const table = document.getElementById("countryTables");
 
-numOfPlacesToShow = 5;
+const numOfPlacesToShow = 5;
+const maxPlacesToShow = 75;
 
 let sorted = [];
 
@@ -10,7 +11,7 @@ table.innerHTML += `Getting the latest data... `;
 function changeNum(numToShow = numOfPlacesToShow) {
   function changeNumGen(textNum, domject) {
     const realNum = Number(textNum);
-    if (realNum < 50) {
+    if (realNum < maxPlacesToShow) {
       changeNum(realNum + 5);
       domject.innerText = realNum + 5;
     } else {
