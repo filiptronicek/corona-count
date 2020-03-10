@@ -8,7 +8,18 @@ let sorted = [];
 
 table.innerHTML += `Getting the latest data... `;
 
-function changeNum(numToShow = numOfPlacesToShow) {
+let ascendingFilter = true;
+
+function updateFilter() {
+  ascendingFilter = !ascendingFilter;
+  changeNum(
+    Number(document.getElementById("numToShow").innerText),
+    ascendingFilter
+  );
+  document.getElementById("showFilterText").innerText = ascendingFilter ? "top" : "least";
+}
+
+function changeNum(numToShow = numOfPlacesToShow, ascending = ascendingFilter) {
   function changeNumGen(textNum, domject) {
     const realNum = Number(textNum);
     if (realNum < maxPlacesToShow) {
@@ -30,11 +41,17 @@ function changeNum(numToShow = numOfPlacesToShow) {
       <tr>
           <th>Name</th>
           <th>Number of confirmed cases</th> `;
-      let objSorted = resp
-        .sort(function(a, b) {
+      let objSorted = resp;
+      if (ascending) {
+        objSorted.sort(function(a, b) {
           return a.latest - b.latest;
-        })
-        .reverse();
+        });
+      } else {
+        objSorted.sort(function(a, b) {
+          return b.latest - a.latest;
+        });
+      }
+      objSorted.reverse();
       let rank = 0;
       for (let instance in objSorted) {
         rank++;
@@ -46,12 +63,13 @@ function changeNum(numToShow = numOfPlacesToShow) {
           listStr = `${objSorted[instance].country}`;
         }
         if (rank < numToShow + 1) {
-          table.innerHTML += `
-
-                  <td> ${listStr} </td>
-                  <td> ${objSorted[instance].latest} </td>
-              </tr>
-              `;
+         // if (objSorted[instance].latest !== 0) {
+            table.innerHTML += `
+             <td> ${listStr} </td>
+             <td> ${objSorted[instance].latest} </td>
+          </tr>
+          `;
+          //}
         }
       }
       return objSorted.length;

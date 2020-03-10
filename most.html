@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Corona tracker</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/most.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/most.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
@@ -50,11 +50,20 @@
   />
 
   <body>
-    <h1 id="num" style="font-weight: bold;" class="center">Top [<span class="changeNumSpan" onclick="changeNum.gen(this.innerText, this)">5</span>] places</h1>
-    <table id="countryTables">
-
-    </table>
-    <center><a href="./" class="linkbtn btn center red">Go back</a></center> 
-
+    <h1 id="num" style="font-weight: bold;" class="center">
+      Top [<span
+        id="numToShow"
+        class="changeNumSpan"
+        onclick="changeNum.gen(this.innerText, this)"
+        >5</span
+      >] places
+    </h1>
+    <center>
+      <span class="showFilter">
+        Show: <span id="showFilterText" onclick="updateFilter()">top</span>
+      </span>
+      <table id="countryTables"></table>
+      <a href="./" class="linkbtn btn center red">Go back</a>
+    </center>
   </body>
 </html>

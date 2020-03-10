@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
-@import url('https://fonts.googleapis.com/css?family=Oxanium&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Oxanium&display=swap");
 
 .sick {
   text-align: center;
@@ -26,7 +26,8 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-#percentage, #recoveryRate {
+#percentage,
+#recoveryRate {
   font-size: 8vw;
   margin-top: none;
   margin-bottom: none;
@@ -38,12 +39,9 @@ body {
   font-size: 3vw;
 }
 @media only screen and (max-width: 800px) {
-  
   #recoveryRate {
     font-size: 16vw;
-
   }
-
   .sick {
     font-size: 16vw;
   }
@@ -62,7 +60,7 @@ body {
   }
   .accordion,
   .panel {
-      width: 100% !important;
+    width: 100% !important;
   }
 }
 .github-corner:hover .octo-arm {

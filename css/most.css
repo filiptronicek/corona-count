@@ -33,3 +33,6 @@ tr:nth-child(even) {
     max-width: 100vw;
   }
 }
+.showFilter {
+  font-size: 2.5rem;
+}
