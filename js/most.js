@@ -2,7 +2,7 @@ const url = "https://coronavirus-tracker-api.herokuapp.com/confirmed";
 const table = document.getElementById("countryTables");
 
 const numOfPlacesToShow = 5;
-const maxPlacesToShow = 75;
+const maxPlacesToShow = 150;
 
 let sorted = [];
 
