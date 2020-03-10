@@ -38,12 +38,18 @@ body {
   font-size: 3vw;
 }
 @media only screen and (max-width: 800px) {
+  
+  #recoveryRate {
+    font-size: 16vw;
+
+  }
 
   .sick {
     font-size: 16vw;
   }
   #percentage {
     font-size: 15vw;
+    margin-bottom: 0px;
   }
   .sickText {
     font-size: 7vw;
