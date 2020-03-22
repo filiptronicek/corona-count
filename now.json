@@ -1,4 +1,7 @@
 {
-  "routes": [{ "src": "/charts", "dest": "/charts.html" },
-             {"src": "/most", "dest": "/most.html"}]
-} 
+  "routes": [
+    { "src": "/charts", "dest": "/charts.html" },
+    { "src": "/most", "dest": "/most.html" },
+    { "src": "/map", "dest": "/map.html" }
+  ]
+}
