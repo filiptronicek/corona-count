@@ -31,6 +31,8 @@ refreshPage = setInterval(() => {
   }
 }, 10000);
 
+const options = { hour: "numeric", minute: "numeric" };
+
 function getData(commaLvl = 4) {
   fetch(baseUrl)
     .then(response => response.json())
@@ -39,7 +41,7 @@ function getData(commaLvl = 4) {
       percentage = 100 * (Number(resp.cases) / population);
 
       updateDate = new Date(resp.updated);
-      updated.innerText = `(Last updated on ${updateDate.toLocaleString()})`;
+      updated.innerText = `(Last updated at ${updateDate.toLocaleString(undefined,options)})`;
       percent.innerText = `${percentage.toFixed(commaLvl)}%`;
       tptDiv.innerText = resp.cases.toLocaleString();
       recoveryRate.innerText = `${(100 * (resp.recovered / resp.cases)).toFixed(
