@@ -3,6 +3,7 @@ const baseUrl = "https://corona.lmao.ninja/all";
 const tptDiv = document.getElementById("num");
 const percent = document.getElementById("percentage");
 const recoveryRate = document.getElementById("recoveryRate");
+const updated = document.getElementById("updatedOn");
 
 const population = 7794798739;
 
@@ -37,6 +38,8 @@ function getData(commaLvl = 4) {
       console.table(resp);
       percentage = 100 * (Number(resp.cases) / population);
 
+      updateDate = new Date(resp.updated);
+      updated.innerText = `(Last updated on ${updateDate.toLocaleString()})`;
       percent.innerText = `${percentage.toFixed(commaLvl)}%`;
       tptDiv.innerText = resp.cases.toLocaleString();
       recoveryRate.innerText = `${(100 * (resp.recovered / resp.cases)).toFixed(
