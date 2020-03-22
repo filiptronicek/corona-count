@@ -1,0 +1,4 @@
+{
+  "routes": [{ "src": "/charts", "dest": "/charts.html" },
+             {"src": "/most", "dest": "/most.html"}]
+} 
