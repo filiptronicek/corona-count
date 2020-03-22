@@ -19,7 +19,7 @@ percent.onclick = function() {
   percent.innerText = `${percentage.toFixed(commaDigits)}%`;
 };
 
-let reloadingin = 90;
+let reloadingin = 30;
 
 refreshPage = setInterval(() => {
   if (reloadingin > 0) {
