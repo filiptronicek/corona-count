@@ -1,4 +1,4 @@
-const baseUrl = "https://coronavirus-tracker-api.herokuapp.com/all";
+const baseUrl = "https://corona.lmao.ninja/all";
 
 const tptDiv = document.getElementById("num");
 const percent = document.getElementById("percentage");
@@ -21,16 +21,15 @@ percent.onclick = function() {
 function getData(commaLvl = 4) {
   fetch(baseUrl)
     .then(response => response.json())
-    .then(resp => (tptDiv.innerText = resp.latest))
     .then(resp => {
       console.table(resp);
-      percentage = 100 * (Number(resp.confirmed) / population);
+      percentage = 100 * (Number(resp.cases) / population);
 
       percent.innerText = `${percentage.toFixed(commaLvl)}%`;
-      tptDiv.innerText = resp.confirmed.toLocaleString();
+      tptDiv.innerText = resp.cases.toLocaleString();
       recoveryRate.innerText = `${(
         100 *
-        (resp.recovered / resp.confirmed)
+        (resp.recovered / resp.cases)
       ).toFixed(2)}%`;
     });
 }
