@@ -1,4 +1,4 @@
-const url = "https://coronavirus-tracker-api.herokuapp.com/confirmed";
+const url = "https://corona.lmao.ninja/countries";
 const table = document.getElementById("countryTables");
 
 const numOfPlacesToShow = 5;
@@ -20,6 +20,7 @@ function updateFilter() {
 }
 
 function changeNum(numToShow = numOfPlacesToShow, ascending = ascendingFilter) {
+  let index = 1;
   function changeNumGen(textNum, domject) {
     const realNum = Number(textNum);
     if (realNum < maxPlacesToShow) {
@@ -34,7 +35,6 @@ function changeNum(numToShow = numOfPlacesToShow, ascending = ascendingFilter) {
 
   fetch(url)
     .then(response => response.json())
-    .then(resp => (resp = resp.locations))
     .then(resp => {
       table.innerHTML = "";
       table.innerHTML += `
@@ -44,11 +44,11 @@ function changeNum(numToShow = numOfPlacesToShow, ascending = ascendingFilter) {
       let objSorted = resp;
       if (ascending) {
         objSorted.sort(function(a, b) {
-          return a.latest - b.latest;
+          return a.cases - b.cases;
         });
       } else {
         objSorted.sort(function(a, b) {
-          return b.latest - a.latest;
+          return b.cases - a.cases;
         });
       }
       objSorted.reverse();
@@ -57,19 +57,21 @@ function changeNum(numToShow = numOfPlacesToShow, ascending = ascendingFilter) {
         rank++;
         let listStr = "";
 
-        if (objSorted[instance].province !== "") {
+        if (objSorted[instance].province) {
           listStr = `${objSorted[instance].province}, ${objSorted[instance].country}`;
         } else {
           listStr = `${objSorted[instance].country}`;
         }
         if (rank < numToShow + 1) {
-         // if (objSorted[instance].latest !== 0) {
+         // if (objSorted[instance].cases !== 0) {
             table.innerHTML += `
-             <td> ${listStr} </td>
-             <td> ${objSorted[instance].latest} </td>
+             <td> ${index}. ${listStr} </td>
+             <td> ${objSorted[instance].cases} </td>
           </tr>
           `;
           //}
+          index ++;
+
         }
       }
       return objSorted.length;
