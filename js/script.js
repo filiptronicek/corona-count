@@ -18,12 +18,12 @@ percent.onclick = function() {
   percent.innerText = `${percentage.toFixed(commaDigits)}%`;
 };
 
-let reloadingin = 900; 
+let reloadingin = 901;
 
 refreshPage = setInterval(() => {
-  if(reloadingin > 0) {
-  reloadingin --;
-  console.log(`Reloading in ${reloadingin}`);
+  if (reloadingin > 0) {
+    reloadingin--;
+    console.log(`Reloading in ${reloadingin}`);
   } else {
     clearInterval(refreshPage);
     location.reload();
@@ -39,10 +39,9 @@ function getData(commaLvl = 4) {
 
       percent.innerText = `${percentage.toFixed(commaLvl)}%`;
       tptDiv.innerText = resp.cases.toLocaleString();
-      recoveryRate.innerText = `${(
-        100 *
-        (resp.recovered / resp.cases)
-      ).toFixed(2)}%`;
+      recoveryRate.innerText = `${(100 * (resp.recovered / resp.cases)).toFixed(
+        2
+      )}%`;
     });
 }
 
