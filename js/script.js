@@ -18,17 +18,17 @@ percent.onclick = function() {
   percent.innerText = `${percentage.toFixed(commaDigits)}%`;
 };
 
-let reloadingin = 901;
+let reloadingin = 90;
 
 refreshPage = setInterval(() => {
   if (reloadingin > 0) {
     reloadingin--;
-    console.log(`Reloading in ${reloadingin}`);
+    console.log(`Reloading in ${reloadingin*10} seconds`);
   } else {
     clearInterval(refreshPage);
     location.reload();
   }
-}, 1000);
+}, 10000);
 
 function getData(commaLvl = 4) {
   fetch(baseUrl)
