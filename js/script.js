@@ -1,4 +1,6 @@
 const baseUrl = "https://corona.lmao.ninja/all";
+const rtf1 = new Intl.RelativeTimeFormat('en', { numeric: "auto"  });
+
 
 const tptDiv = document.getElementById("num");
 const percent = document.getElementById("percentage");
@@ -37,10 +39,12 @@ function getData(commaLvl = 4) {
   fetch(baseUrl)
     .then(response => response.json())
     .then(resp => {
+      const nowDate = new Date();
       console.table(resp);
       percentage = 100 * (Number(resp.cases) / population);
 
       updateDate = new Date(resp.updated);
+      let updateDiff = (updateDate / 1000)-(nowDate/1000);
       updated.innerText = `(Last updated at ${updateDate.toLocaleString(undefined,options)})`;
       percent.innerText = `${percentage.toFixed(commaLvl)}%`;
       tptDiv.innerText = resp.cases.toLocaleString();
