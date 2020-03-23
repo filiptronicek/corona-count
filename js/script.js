@@ -22,7 +22,7 @@ percent.onclick = function() {
 let reloadingin = 30;
 
 refreshPage = setInterval(() => {
-  if (reloadingin === 0) {
+  if (reloadingin >= 1) {
     reloadingin--;
     console.log(`Reloading in ${reloadingin*10} seconds`);
   } else {
