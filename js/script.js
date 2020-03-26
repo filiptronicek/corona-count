@@ -1,6 +1,5 @@
 const baseUrl = "https://corona.lmao.ninja/all";
-const rtf1 = new Intl.RelativeTimeFormat('en', { numeric: "auto"  });
-
+const rtf1 = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
 
 const tptDiv = document.getElementById("num");
 const percent = document.getElementById("percentage");
@@ -21,22 +20,39 @@ percent.onclick = function() {
   percent.innerText = `${percentage.toFixed(commaDigits)}%`;
 };
 
-let reloadingin = 30;
+let reloadingin = 60;
+let idle;
+let idleTime = 0;
+
+function reloadData() {
+  if (document.hidden) {
+    idle = setInterval(() => {
+      idleTime++;
+      console.log("Idle for "+idleTime);
+    }, 1000);
+  } else {
+    if(idleTime > 120) location.reload();
+    idleTime = 0;
+    clearInterval(idle);
+
+  }
+}
 
 refreshPage = setInterval(() => {
   if (reloadingin >= 1) {
     reloadingin--;
-    console.log(`Reloading in ${reloadingin*10} seconds`);
+    console.log(`Reloading in ${reloadingin * 10} seconds`);
   } else {
-    if(document.hidden) {
-      reloadingin = 30;
+    if (document.hidden) {
+      reloadingin = 60;
     } else {
       clearInterval(refreshPage);
       location.reload();
     }
-
   }
 }, 10000);
+
+document.addEventListener("visibilitychange", reloadData);
 
 const options = { hour: "numeric", minute: "numeric" };
 
@@ -49,8 +65,11 @@ function getData(commaLvl = 4) {
       percentage = 100 * (Number(resp.cases) / population);
 
       updateDate = new Date(resp.updated);
-      let updateDiff = (updateDate / 1000)-(nowDate/1000);
-      updated.innerText = `(Last updated at ${updateDate.toLocaleString(undefined,options)})`;
+      let updateDiff = updateDate / 1000 - nowDate / 1000;
+      updated.innerText = `(Last updated at ${updateDate.toLocaleString(
+        undefined,
+        options
+      )})`;
       percent.innerText = `${percentage.toFixed(commaLvl)}%`;
       tptDiv.innerText = resp.cases.toLocaleString();
       recoveryRate.innerText = `${(100 * (resp.recovered / resp.cases)).toFixed(
