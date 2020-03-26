@@ -78,7 +78,7 @@ function getData(commaLvl = 4) {
       )}%`;
     });
 }
-if(window.location.href == "https://coronatime.now.sh") {
+if(window.location.href === "https://coronatime.now.sh/" || window.location.href === "https://coronatime.now.sh") {
   link.setAttribute("href", "/most"); 
 }
 
