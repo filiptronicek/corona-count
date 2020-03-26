@@ -28,8 +28,13 @@ refreshPage = setInterval(() => {
     reloadingin--;
     console.log(`Reloading in ${reloadingin*10} seconds`);
   } else {
-    clearInterval(refreshPage);
-    location.reload();
+    if(document.hidden) {
+      reloadingin = 30;
+    } else {
+      clearInterval(refreshPage);
+      location.reload();
+    }
+
   }
 }, 10000);
 
