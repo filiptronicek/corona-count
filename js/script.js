@@ -5,6 +5,7 @@ const tptDiv = document.getElementById("num");
 const percent = document.getElementById("percentage");
 const recoveryRate = document.getElementById("recoveryRate");
 const updated = document.getElementById("updatedOn");
+const link = document.querySelector(".linkbtn");
 
 const population = 7794798739;
 
@@ -76,6 +77,9 @@ function getData(commaLvl = 4) {
         2
       )}%`;
     });
+}
+if(window.location.href == "https://coronatime.now.sh") {
+  link.setAttribute("href", "/most"); 
 }
 
 if (percentage > 100) location.reload();
