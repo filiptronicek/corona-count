@@ -40,7 +40,9 @@ function changeNum(numToShow = numOfPlacesToShow, ascending = ascendingFilter) {
       table.innerHTML += `
       <tr>
           <th>Name</th>
-          <th>Number of confirmed cases</th> `;
+          <th>Flag</th>
+          <th>Number of confirmed cases</th>
+           `;
       let objSorted = resp;
       if (ascending) {
         objSorted.sort(function(a, b) {
@@ -66,7 +68,10 @@ function changeNum(numToShow = numOfPlacesToShow, ascending = ascendingFilter) {
          // if (objSorted[instance].cases !== 0) {
             table.innerHTML += `
              <td> ${index}. ${listStr} </td>
+             <td> <img width="64" src="${objSorted[instance].countryInfo.flag}"> </td>
+
              <td> ${objSorted[instance].cases} </td>
+      
           </tr>
           `;
           //}
