@@ -69,8 +69,7 @@ function changeNum(numToShow = numOfPlacesToShow, ascending = ascendingFilter) {
             table.innerHTML += `
              <td> ${index}. ${listStr} </td>
              <td> <img width="64" src="${objSorted[instance].countryInfo.flag}"> </td>
-
-             <td> ${objSorted[instance].cases} </td>
+             <td> ${objSorted[instance].cases.toLocaleString()} </td>
       
           </tr>
           `;
