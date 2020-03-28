@@ -15,17 +15,22 @@
       type="text/css"
       href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
     />
-    <script src="js/most.js" defer></script>
     <script type="text/javascript">
       var _paq = window._paq || [];
-      _paq.push(['trackPageView']);
-      _paq.push(['enableLinkTracking']);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
       (function() {
-        var u="//nfogix.com/";
-        _paq.push(['setTrackerUrl', u+'api/track']);
-        _paq.push(['setSiteId', '85d579b8-3eff-43ab-9516-dee0850f00c0']);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'js/nfogix.min.js'; s.parentNode.insertBefore(g,s);
+        var u = "//nfogix.com/";
+        _paq.push(["setTrackerUrl", u + "api/track"]);
+        _paq.push(["setSiteId", "85d579b8-3eff-43ab-9516-dee0850f00c0"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.type = "text/javascript";
+        g.async = true;
+        g.defer = true;
+        g.src = u + "js/nfogix.min.js";
+        s.parentNode.insertBefore(g, s);
       })();
     </script>
   </head>
@@ -54,14 +59,58 @@
       ></path>
     </svg>
   </a>
-  <img
-    src="assets/loading.svg"
-    alt="Map of the world"
-    class="center"
-    onclick="this.style.display = 'none'"
-  />
-
+  <p class="center">
+    Click on the planet below to see charts
+  </p>
+  <a class="modal-trigger" href="#modal1">
+    <img src="assets/loading.svg" alt="Map of the world" class="center" />
+  </a>
   <body>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <div class="modal-content center">
+        <h4>Charts of COVID-19</h4>
+        <iframe
+          style="width:100%"
+          ;
+          width="560"
+          height="392"
+          src="https://coronavirus.app/chart/evolution/infected?embed=true"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <br />
+        <iframe
+          style="width:100%"
+          ;
+          width="560"
+          height="392"
+          src="https://coronavirus.app/chart/evolution/dead?embed=true"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <br />
+        <iframe
+          style="width:100%"
+          ;
+          width="560"
+          height="392"
+          src="https://coronavirus.app/chart/evolution/recovered?embed=true"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <br />
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-red btn-flat"
+          >Close</a
+        >
+      </div>
+    </div>
+
     <h1 id="num" style="font-weight: bold;" class="center">
       Top [<span
         id="numToShow"
@@ -78,4 +127,6 @@
       <a href="./" class="linkbtn btn center red">Go back</a>
     </center>
   </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="js/most.js"></script>
 </html>

@@ -83,3 +83,8 @@ function changeNum(numToShow = numOfPlacesToShow, ascending = ascendingFilter) {
   changeNum.gen = changeNumGen;
 }
 changeNum();
+
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.modal');
+  var instances = M.Modal.init(elems);
+});
