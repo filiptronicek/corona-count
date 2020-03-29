@@ -13,37 +13,43 @@ table.innerHTML += `Getting the latest data... `;
 let ascendingFilter = true;
 
 function zeroFormatting(num) {
-  if (num < 10) return "0"+num;
+  if (num < 10) return "0" + num;
   else return num;
 }
 
 function createModal(code, country) {
-
-  const todayDate = new Date(); 
-
+  const todayDate = new Date();
 
   modalCountryName.innerText = country;
-  if (code !== "IT")
-  {
+  if (code !== "IT") {
     modalContent.innerHTML = `
     <h4 style="float: left;"> Confirmed cases chart (until yesterday) </h4>
-  <img width="100%" src="https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(todayDate.getMonth()+1)}-${zeroFormatting(todayDate.getDate() - 1) }_${code}_confirmed.svg">
+  <img width="100%" src="https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(
+      todayDate.getMonth() + 1
+    )}-${zeroFormatting(todayDate.getDate() - 1)}_${code}_confirmed.svg">
   <br>
   <br>
   <h4 style="float: left;"> Forecast chart </h4>
-  <img width="100%" src="https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(todayDate.getMonth()+1)}-${zeroFormatting(todayDate.getDate() - 1) }_${code}_forecast.svg">
+  <img width="100%" src="https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(
+      todayDate.getMonth() + 1
+    )}-${zeroFormatting(todayDate.getDate() - 1)}_${code}_forecast.svg">
 
   `;
   } else {
     modalContent.innerHTML = `
-    <img width="100%" src="https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(todayDate.getMonth()+1)}-${zeroFormatting(todayDate.getDate()) }_${code}_confirmed.svg">
+    <img width="100%" src="https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(
+      todayDate.getMonth() + 1
+    )}-${zeroFormatting(todayDate.getDate())}_${code}_confirmed.svg">
     <br>
     <br>
     <h4 style="float: left;"> Forecast chart </h4>
-    <img width="100%" src="https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(todayDate.getMonth()+1)}-${zeroFormatting(todayDate.getDate()) }_${code}_forecast.svg">
+    <img width="100%" src="https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(
+      todayDate.getMonth() + 1
+    )}-${zeroFormatting(todayDate.getDate())}_${code}_forecast.svg">
     `;
   }
-  modalContent.innerHTML += "Charts from <a target='blank' href='https://open-covid-19.github.io/explorer'>open-covid-19/explorer</a>"
+  modalContent.innerHTML +=
+    "Charts from <a target='blank' href='https://open-covid-19.github.io/explorer'>open-covid-19/explorer</a>";
 }
 
 function updateFilter() {
@@ -103,12 +109,11 @@ function changeNum(numToShow = numOfPlacesToShow, ascending = ascendingFilter) {
           listStr = `${objSorted[instance].country}`;
         }
         if (rank < numToShow + 1) {
-          // if (objSorted[instance].cases !== 0) {
           table.innerHTML += `
              
-             <td><a class="modal-trigger" href="#modalDyn" onClick="createModal('${
-               objSorted[instance].countryInfo.iso2
-             }', '${listStr}')"> ${index}. ${listStr} </a> </td>
+             <td> ${index}.<a class="modal-trigger" href="#modalDyn" onClick="createModal('${
+            objSorted[instance].countryInfo.iso2
+          }', '${listStr}')"> ${listStr} </a> </td>
              <td> <img width="64" src="${
                objSorted[instance].countryInfo.flag
              }"> </td>
@@ -117,7 +122,6 @@ function changeNum(numToShow = numOfPlacesToShow, ascending = ascendingFilter) {
       
           </tr>
           `;
-          //}
           index++;
         }
       }
