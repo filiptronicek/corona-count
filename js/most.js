@@ -51,26 +51,32 @@ function createModal(code, country) {
   <img width="100%" src="${forecastImage}">`;
       }
       modalContent.innerHTML +=
-      "Charts from <a target='blank' href='https://open-covid-19.github.io/explorer'>open-covid-19/explorer</a>";
+        "Charts from <a target='blank' href='https://open-covid-19.github.io/explorer'>open-covid-19/explorer</a>";
     } else {
       modalContent.innerText = "We didn't find any charts :(";
     }
   } else {
-    modalContent.innerHTML = `
-    <img width="100%" src="https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(
+    chartImage = `https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(
       todayDate.getMonth() + 1
-    )}-${zeroFormatting(todayDate.getDate())}_${code}_confirmed.svg">
-    <br>
-    <br>
-    <h4 style="float: left;"> Forecast chart </h4>
-    <img width="100%" src="https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(
-      todayDate.getMonth() + 1
-    )}-${zeroFormatting(todayDate.getDate())}_${code}_forecast.svg">
-    `;
-    modalContent.innerHTML +=
-    "Charts from <a target='blank' href='https://open-covid-19.github.io/explorer'>open-covid-19/explorer</a>";
-  }
+    )}-${zeroFormatting(todayDate.getDate())}_${code}_confirmed.svg`;
 
+    forecastImage = `https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(
+      todayDate.getMonth() + 1
+    )}-${zeroFormatting(todayDate.getDate())}_${code}_forecast.svg`;
+
+    if (imageExists(chartImage)) {
+      modalContent.innerHTML = `
+    <img width="100%" src="${chartImage}">`;
+      if (imageExists(forecastImage)) {
+        modalContent.innerHTML +=
+        `
+    <h4 style="float: left;"> Forecast chart </h4>
+    <img width="100%" src="${forecastImage}">`;
+      }
+      modalContent.innerHTML +=
+        "Charts from <a target='blank' href='https://open-covid-19.github.io/explorer'>open-covid-19/explorer</a>";
+    }
+  }
 }
 
 function updateFilter() {
