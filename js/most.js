@@ -12,6 +12,15 @@ table.innerHTML += `Getting the latest data... `;
 
 let ascendingFilter = true;
 
+function imageExists(image_url) {
+  var http = new XMLHttpRequest();
+
+  http.open("HEAD", image_url, false);
+  http.send();
+
+  return http.status != 404;
+}
+
 function zeroFormatting(num) {
   if (num < 10) return "0" + num;
   else return num;
@@ -21,20 +30,31 @@ function createModal(code, country) {
   const todayDate = new Date();
 
   modalCountryName.innerText = country;
-  if (code !== "IT") {
-    modalContent.innerHTML = `
-    <h4 style="float: left;"> Confirmed cases chart (until yesterday) </h4>
-  <img width="100%" src="https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(
-      todayDate.getMonth() + 1
-    )}-${zeroFormatting(todayDate.getDate() - 1)}_${code}_confirmed.svg">
-  <br>
-  <br>
-  <h4 style="float: left;"> Forecast chart </h4>
-  <img width="100%" src="https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(
-      todayDate.getMonth() + 1
-    )}-${zeroFormatting(todayDate.getDate() - 1)}_${code}_forecast.svg">
 
+  let forecastImage = `https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(
+    todayDate.getMonth() + 1
+  )}-${zeroFormatting(todayDate.getDate() - 1)}_${code}_forecast.svg`;
+
+  let chartImage = `https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(
+    todayDate.getMonth() + 1
+  )}-${zeroFormatting(todayDate.getDate() - 1)}_${code}_confirmed.svg`;
+
+  if (code !== "IT") {
+    if (imageExists(chartImage)) {
+      modalContent.innerHTML = `
+    <h4 style="float: left;"> Confirmed cases chart (until yesterday) </h4>
+  <img width="100%" src="${chartImage}">
   `;
+      if (imageExists(forecastImage)) {
+        modalContent.innerHTML += `
+  <h4 style="float: left;"> Forecast chart </h4>
+  <img width="100%" src="${forecastImage}">`;
+      }
+      modalContent.innerHTML +=
+      "Charts from <a target='blank' href='https://open-covid-19.github.io/explorer'>open-covid-19/explorer</a>";
+    } else {
+      modalContent.innerText = "We didn't find any charts :(";
+    }
   } else {
     modalContent.innerHTML = `
     <img width="100%" src="https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(
@@ -47,9 +67,10 @@ function createModal(code, country) {
       todayDate.getMonth() + 1
     )}-${zeroFormatting(todayDate.getDate())}_${code}_forecast.svg">
     `;
-  }
-  modalContent.innerHTML +=
+    modalContent.innerHTML +=
     "Charts from <a target='blank' href='https://open-covid-19.github.io/explorer'>open-covid-19/explorer</a>";
+  }
+
 }
 
 function updateFilter() {
