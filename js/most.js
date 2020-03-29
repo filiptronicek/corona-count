@@ -12,11 +12,37 @@ table.innerHTML += `Getting the latest data... `;
 
 let ascendingFilter = true;
 
+function zeroFormatting(num) {
+  if (num < 10) return "0"+num;
+  else return num;
+}
+
 function createModal(code, country) {
+
+  const todayDate = new Date(); 
+
+
   modalCountryName.innerText = country;
-  modalContent.innerHTML = `
-  <img width="100%" src="https://open-covid-19.github.io/data/charts/2020-03-28_${code}_confirmed.svg">
-  `
+  if (code !== "IT")
+  {
+    modalContent.innerHTML = `
+    <h4 style="float: left;"> Confirmed cases chart (until yesterday) </h4>
+  <img width="100%" src="https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(todayDate.getMonth()+1)}-${zeroFormatting(todayDate.getDate() - 1) }_${code}_confirmed.svg">
+  <br>
+  <br>
+  <h4 style="float: left;"> Forecast chart </h4>
+  <img width="100%" src="https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(todayDate.getMonth()+1)}-${zeroFormatting(todayDate.getDate() - 1) }_${code}_forecast.svg">
+
+  `;
+  } else {
+    modalContent.innerHTML = `
+    <img width="100%" src="https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(todayDate.getMonth()+1)}-${zeroFormatting(todayDate.getDate()) }_${code}_confirmed.svg">
+    <br>
+    <br>
+    <h4 style="float: left;"> Forecast chart </h4>
+    <img width="100%" src="https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(todayDate.getMonth()+1)}-${zeroFormatting(todayDate.getDate()) }_${code}_forecast.svg">
+    `;
+  }
 }
 
 function updateFilter() {
@@ -25,7 +51,9 @@ function updateFilter() {
     Number(document.getElementById("numToShow").innerText),
     ascendingFilter
   );
-  document.getElementById("showFilterText").innerText = ascendingFilter ? "top" : "least";
+  document.getElementById("showFilterText").innerText = ascendingFilter
+    ? "top"
+    : "least";
 }
 
 function changeNum(numToShow = numOfPlacesToShow, ascending = ascendingFilter) {
@@ -74,19 +102,22 @@ function changeNum(numToShow = numOfPlacesToShow, ascending = ascendingFilter) {
           listStr = `${objSorted[instance].country}`;
         }
         if (rank < numToShow + 1) {
-         // if (objSorted[instance].cases !== 0) {
-            table.innerHTML += `
+          // if (objSorted[instance].cases !== 0) {
+          table.innerHTML += `
              
-             <td><a class="modal-trigger" href="#modalDyn" onClick="createModal('${objSorted[instance].countryInfo.iso2}', '${listStr}')"> ${index}. ${listStr} </a> </td>
-             <td> <img width="64" src="${objSorted[instance].countryInfo.flag}"> </td>
+             <td><a class="modal-trigger" href="#modalDyn" onClick="createModal('${
+               objSorted[instance].countryInfo.iso2
+             }', '${listStr}')"> ${index}. ${listStr} </a> </td>
+             <td> <img width="64" src="${
+               objSorted[instance].countryInfo.flag
+             }"> </td>
             
              <td> ${objSorted[instance].cases.toLocaleString()} </td>
       
           </tr>
           `;
           //}
-          index ++;
-
+          index++;
         }
       }
       return objSorted.length;
@@ -95,7 +126,7 @@ function changeNum(numToShow = numOfPlacesToShow, ascending = ascendingFilter) {
 }
 changeNum();
 
-document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.modal');
+document.addEventListener("DOMContentLoaded", function() {
+  var elems = document.querySelectorAll(".modal");
   var instances = M.Modal.init(elems);
 });
