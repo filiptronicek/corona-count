@@ -85,9 +85,7 @@ function updateFilter() {
     Number(document.getElementById("numToShow").innerText),
     ascendingFilter
   );
-  document.getElementById("showFilterText").innerText = ascendingFilter
-    ? "top"
-    : "least";
+  document.getElementById("showFilterText").innerText = ascendingFilter ? "top" : "least";
 }
 
 function changeNum(numToShow = numOfPlacesToShow, ascending = ascendingFilter) {
