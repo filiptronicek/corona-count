@@ -43,6 +43,7 @@ function createModal(code, country) {
     <img width="100%" src="https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(todayDate.getMonth()+1)}-${zeroFormatting(todayDate.getDate()) }_${code}_forecast.svg">
     `;
   }
+  modalContent.innerHTML += "Charts from <a target='blank' href='https://open-covid-19.github.io/explorer'>open-covid-19/explorer</a>"
 }
 
 function updateFilter() {
