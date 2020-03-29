@@ -1,5 +1,7 @@
 const url = "https://corona.lmao.ninja/countries";
 const table = document.getElementById("countryTables");
+const modalContent = document.getElementById("dynModCont");
+const modalCountryName = document.getElementById("countrySpan");
 
 const numOfPlacesToShow = 5;
 const maxPlacesToShow = 150;
@@ -9,6 +11,13 @@ let sorted = [];
 table.innerHTML += `Getting the latest data... `;
 
 let ascendingFilter = true;
+
+function createModal(code, country) {
+  modalCountryName.innerText = country;
+  modalContent.innerHTML = `
+  <img width="100%" src="https://open-covid-19.github.io/data/charts/2020-03-28_${code}_confirmed.svg">
+  `
+}
 
 function updateFilter() {
   ascendingFilter = !ascendingFilter;
@@ -67,8 +76,10 @@ function changeNum(numToShow = numOfPlacesToShow, ascending = ascendingFilter) {
         if (rank < numToShow + 1) {
          // if (objSorted[instance].cases !== 0) {
             table.innerHTML += `
-             <td> ${index}. ${listStr} </td>
+             
+             <td><a class="modal-trigger" href="#modalDyn" onClick="createModal('${objSorted[instance].countryInfo.iso2}', '${listStr}')"> ${index}. ${listStr} </a> </td>
              <td> <img width="64" src="${objSorted[instance].countryInfo.flag}"> </td>
+            
              <td> ${objSorted[instance].cases.toLocaleString()} </td>
       
           </tr>
