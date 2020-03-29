@@ -53,7 +53,7 @@ function createModal(code, country) {
       modalContent.innerHTML +=
         "Charts from <a target='blank' href='https://open-covid-19.github.io/explorer'>open-covid-19/explorer</a>";
     } else {
-      modalContent.innerText = "We didn't find any charts :(";
+      modalContent.innerText = "We didn't find any charts 😫";
     }
   } else {
     chartImage = `https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(
