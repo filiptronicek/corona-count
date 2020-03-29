@@ -32,6 +32,9 @@ tr:nth-child(even) {
   table {
     max-width: 100vw;
   }
+  .modal {
+    width: 100vw !important;
+  }
 }
 .showFilter {
   font-size: 2.5rem;
