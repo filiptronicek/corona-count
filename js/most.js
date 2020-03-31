@@ -39,22 +39,18 @@ function createModal(code, country) {
     todayDate.getMonth() + 1
   )}-${zeroFormatting(todayDate.getDate() - 1)}_${code}_confirmed.svg`;
 
-  if (code !== "IT") {
-    if (imageExists(chartImage)) {
-      modalContent.innerHTML = `
+  if (imageExists(chartImage)) {
+    modalContent.innerHTML = `
     <h4 style="float: left;"> Confirmed cases chart (until yesterday) </h4>
   <img width="100%" src="${chartImage}">
   `;
-      if (imageExists(forecastImage)) {
-        modalContent.innerHTML += `
+    if (imageExists(forecastImage)) {
+      modalContent.innerHTML += `
   <h4 style="float: left;"> Forecast chart </h4>
   <img width="100%" src="${forecastImage}">`;
-      }
-      modalContent.innerHTML +=
-        "Charts from <a target='blank' href='https://open-covid-19.github.io/explorer'>open-covid-19/explorer</a>";
-    } else {
-      modalContent.innerText = "We didn't find any charts 😫";
     }
+    modalContent.innerHTML +=
+      "Charts from <a target='blank' href='https://open-covid-19.github.io/explorer'>open-covid-19/explorer</a>";
   } else {
     chartImage = `https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(
       todayDate.getMonth() + 1
@@ -68,13 +64,14 @@ function createModal(code, country) {
       modalContent.innerHTML = `
     <img width="100%" src="${chartImage}">`;
       if (imageExists(forecastImage)) {
-        modalContent.innerHTML +=
-        `
+        modalContent.innerHTML += `
     <h4 style="float: left;"> Forecast chart </h4>
     <img width="100%" src="${forecastImage}">`;
       }
       modalContent.innerHTML +=
         "Charts from <a target='blank' href='https://open-covid-19.github.io/explorer'>open-covid-19/explorer</a>";
+    } else {
+      modalContent.innerText = "We didn't find any charts 😫";
     }
   }
 }
@@ -85,7 +82,9 @@ function updateFilter() {
     Number(document.getElementById("numToShow").innerText),
     ascendingFilter
   );
-  document.getElementById("showFilterText").innerText = ascendingFilter ? "top" : "least";
+  document.getElementById("showFilterText").innerText = ascendingFilter
+    ? "top"
+    : "least";
 }
 
 function changeNum(numToShow = numOfPlacesToShow, ascending = ascendingFilter) {
@@ -157,6 +156,6 @@ function changeNum(numToShow = numOfPlacesToShow, ascending = ascendingFilter) {
 changeNum();
 
 document.addEventListener("DOMContentLoaded", function() {
-  var elems = document.querySelectorAll(".modal");
-  var instances = M.Modal.init(elems);
+  const elems = document.querySelectorAll(".modal");
+  const instances = M.Modal.init(elems);
 });
