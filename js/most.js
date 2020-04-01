@@ -13,7 +13,7 @@ table.innerHTML += `Getting the latest data... `;
 let ascendingFilter = true;
 
 function imageExists(image_url) {
-  var http = new XMLHttpRequest();
+  const http = new XMLHttpRequest();
 
   http.open("HEAD", image_url, false);
   http.send();
@@ -31,13 +31,16 @@ function createModal(code, country) {
 
   modalCountryName.innerText = country;
 
-  let forecastImage = `https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(
-    todayDate.getMonth() + 1
-  )}-${zeroFormatting(todayDate.getDate() - 1)}_${code}_forecast.svg`;
+  let yesterdayDate = new Date();
+  yesterdayDate.setDate(todayDate.getDate() - 1);
 
-  let chartImage = `https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(
-    todayDate.getMonth() + 1
-  )}-${zeroFormatting(todayDate.getDate() - 1)}_${code}_confirmed.svg`;
+  let forecastImage = `https://open-covid-19.github.io/data/charts/${yesterdayDate.getFullYear()}-${zeroFormatting(
+    yesterdayDate.getMonth() + 1
+  )}-${zeroFormatting(yesterdayDate.getDate())}_${code}_forecast.svg`;
+
+  let chartImage = `https://open-covid-19.github.io/data/charts/${yesterdayDate.getFullYear()}-${zeroFormatting(
+    yesterdayDate.getMonth() + 1
+  )}-${zeroFormatting(yesterdayDate.getDate())}_${code}_confirmed.svg`;
 
   if (imageExists(chartImage)) {
     modalContent.innerHTML = `
