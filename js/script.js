@@ -1,4 +1,4 @@
-const baseUrl = "https://corona.lmao.ninja/all";
+const baseUrl = "https://corona.lmao.ninja/v2/all";
 const rtf1 = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
 
 const tptDiv = document.getElementById("num");

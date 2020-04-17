@@ -1,4 +1,4 @@
-const url = "https://corona.lmao.ninja/countries";
+const url = "https://corona.lmao.ninja/v2/countries";
 const table = document.getElementById("countryTables");
 const modalContent = document.getElementById("dynModCont");
 const modalCountryName = document.getElementById("countrySpan");
