@@ -31,10 +31,10 @@ function createModal(code, country) {
 
   modalCountryName.innerText = country;
 
-  let yesterdayDate = new Date();
+  const yesterdayDate = new Date();
   yesterdayDate.setDate(todayDate.getDate() - 1);
 
-  let forecastImage = `https://open-covid-19.github.io/data/charts/${yesterdayDate.getFullYear()}-${zeroFormatting(
+  const forecastImage = `https://open-covid-19.github.io/data/charts/${yesterdayDate.getFullYear()}-${zeroFormatting(
     yesterdayDate.getMonth() + 1
   )}-${zeroFormatting(yesterdayDate.getDate())}_${code}_forecast.svg`;
 
@@ -158,7 +158,7 @@ function changeNum(numToShow = numOfPlacesToShow, ascending = ascendingFilter) {
 }
 changeNum();
 
-document.addEventListener("DOMContentLoaded", function() {
-  const elems = document.querySelectorAll(".modal");
-  const instances = M.Modal.init(elems);
-});
+document.addEventListener("DOMContentLoaded", () => {
+    const elems = document.querySelectorAll(".modal");
+    const instances = M.Modal.init(elems);
+  });
