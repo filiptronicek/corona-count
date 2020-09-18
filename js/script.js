@@ -7,7 +7,7 @@ const recoveryRate = document.getElementById("recoveryRate");
 const updated = document.getElementById("updatedOn");
 const link = document.querySelector(".linkbtn");
 
-const population = 7794798739;
+const population = 7812739888;
 
 let commaDigits = 4;
 let percentage;
