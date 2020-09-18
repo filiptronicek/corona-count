@@ -34,7 +34,7 @@ function createModal(code, country) {
   const yesterdayDate = new Date();
   yesterdayDate.setDate(todayDate.getDate() - 1);
 
-  const forecastImage = `https://open-covid-19.github.io/data/charts/${yesterdayDate.getFullYear()}-${zeroFormatting(
+  let forecastImage = `https://open-covid-19.github.io/data/charts/${yesterdayDate.getFullYear()}-${zeroFormatting(
     yesterdayDate.getMonth() + 1
   )}-${zeroFormatting(yesterdayDate.getDate())}_${code}_forecast.svg`;
 
