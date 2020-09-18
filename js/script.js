@@ -12,7 +12,7 @@ const population = 7812739888;
 let commaDigits = 4;
 let percentage;
 
-percent.onclick = function() {
+percent.onclick = () => {
   if (commaDigits > 8) {
     commaDigits = 2;
   } else {
@@ -29,7 +29,7 @@ function reloadData() {
   if (document.hidden) {
     idle = setInterval(() => {
       idleTime++;
-      console.log("Idle for "+idleTime);
+      console.log(`Idle for ${idleTime}`);
     }, 1000);
   } else {
     if(idleTime > 120) location.reload();
