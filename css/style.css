@@ -35,7 +35,7 @@ body {
   font-family: Oxanium, sans-serif;
   margin-bottom: -30px;
 }
-.textD {
+.textD, .stats {
   font-size: 3vw;
 }
 @media only screen and (max-width: 800px) {

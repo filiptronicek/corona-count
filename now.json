@@ -2,6 +2,7 @@
   "routes": [
     { "src": "/charts", "dest": "/charts.html" },
     { "src": "/most", "dest": "/most.html" },
-    { "src": "/map", "dest": "/map.html" }
+    { "src": "/map", "dest": "/map.html" },
+    { "src": "/today/([^/]+)", "dest": "/today.html?c=$1" }
   ]
 }
