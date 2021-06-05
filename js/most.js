@@ -26,59 +26,6 @@ function zeroFormatting(num) {
   else return num;
 }
 
-function createModal(code, country) {
-  const todayDate = new Date();
-
-  modalCountryName.innerText = country;
-
-  const yesterdayDate = new Date();
-  yesterdayDate.setDate(todayDate.getDate() - 1);
-
-  let forecastImage = `https://open-covid-19.github.io/data/charts/${yesterdayDate.getFullYear()}-${zeroFormatting(
-    yesterdayDate.getMonth() + 1
-  )}-${zeroFormatting(yesterdayDate.getDate())}_${code}_forecast.svg`;
-
-  let chartImage = `https://open-covid-19.github.io/data/charts/${yesterdayDate.getFullYear()}-${zeroFormatting(
-    yesterdayDate.getMonth() + 1
-  )}-${zeroFormatting(yesterdayDate.getDate())}_${code}_confirmed.svg`;
-
-  if (imageExists(chartImage)) {
-    modalContent.innerHTML = `
-    <h4 style="float: left;"> Confirmed cases chart (until yesterday) </h4>
-  <img width="100%" src="${chartImage}">
-  `;
-    if (imageExists(forecastImage)) {
-      modalContent.innerHTML += `
-  <h4 style="float: left;"> Forecast chart </h4>
-  <img width="100%" src="${forecastImage}">`;
-    }
-    modalContent.innerHTML +=
-      "Charts from <a target='blank' href='https://open-covid-19.github.io/explorer'>open-covid-19/explorer</a>";
-  } else {
-    chartImage = `https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(
-      todayDate.getMonth() + 1
-    )}-${zeroFormatting(todayDate.getDate())}_${code}_confirmed.svg`;
-
-    forecastImage = `https://open-covid-19.github.io/data/charts/${todayDate.getFullYear()}-${zeroFormatting(
-      todayDate.getMonth() + 1
-    )}-${zeroFormatting(todayDate.getDate())}_${code}_forecast.svg`;
-
-    if (imageExists(chartImage)) {
-      modalContent.innerHTML = `
-    <img width="100%" src="${chartImage}">`;
-      if (imageExists(forecastImage)) {
-        modalContent.innerHTML += `
-    <h4 style="float: left;"> Forecast chart </h4>
-    <img width="100%" src="${forecastImage}">`;
-      }
-      modalContent.innerHTML +=
-        "Charts from <a target='blank' href='https://open-covid-19.github.io/explorer'>open-covid-19/explorer</a>";
-    } else {
-      modalContent.innerText = "We didn't find any charts 😫";
-    }
-  }
-}
-
 function updateFilter() {
   ascendingFilter = !ascendingFilter;
   changeNum(
@@ -138,9 +85,7 @@ function changeNum(numToShow = numOfPlacesToShow, ascending = ascendingFilter) {
         if (rank < numToShow + 1) {
           table.innerHTML += `
              
-             <td> ${index}.<a class="modal-trigger" href="#modalDyn" onClick="createModal('${
-            objSorted[instance].countryInfo.iso2
-          }', '${listStr}')"> ${listStr} </a> </td>
+             <td> ${index}. ${listStr} </td>
              <td> <img width="64" src="${
                objSorted[instance].countryInfo.flag
              }"> </td>
@@ -157,8 +102,3 @@ function changeNum(numToShow = numOfPlacesToShow, ascending = ascendingFilter) {
   changeNum.gen = changeNumGen;
 }
 changeNum();
-
-document.addEventListener("DOMContentLoaded", () => {
-    const elems = document.querySelectorAll(".modal");
-    const instances = M.Modal.init(elems);
-  });
